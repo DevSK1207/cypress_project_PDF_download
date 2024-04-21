@@ -1,0 +1,124 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2024-04-21T18:01:12.394Z",
+    "end": "2024-04-21T18:01:14.588Z",
+    "duration": 2194,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "e1817176-c933-4305-8c94-5da153a533cb",
+      "title": "",
+      "fullFile": "cypress/e2e/test.cy.js",
+      "file": "cypress/e2e/test.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "38eceb96-7d0d-4ead-a248-2602cc2d2c89",
+          "title": "test automation script to download PDF file",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Find the download text",
+              "fullTitle": "test automation script to download PDF file Find the download text",
+              "timedOut": null,
+              "duration": 1547,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.get(':nth-child(4) > a > strong').scrollIntoView().wait(1000).click();",
+              "err": {},
+              "uuid": "1d6f1042-0351-473f-ac75-ffbffdf48025",
+              "parentUUID": "38eceb96-7d0d-4ead-a248-2602cc2d2c89",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Download the file and store in local storage",
+              "fullTitle": "test automation script to download PDF file Download the file and store in local storage",
+              "timedOut": null,
+              "duration": 587,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.url().then(url => {\n  cy.request({\n    method: 'GET',\n    url: url,\n    encoding: 'binary'\n  }).then(response => {\n    try {\n      cy.writeFile(`cypress/downloads/selenium-cheat-sheet.pdf`, response.body, 'binary').then(() => {\n        cy.log(`selenium-cheat-sheet.pdf file downloaded successfully.`);\n        cy.readFile('cypress/downloads/selenium-cheat-sheet.pdf').should('exist');\n      });\n    } catch (error) {\n      cy.log(`Error downloading: ${error}`);\n    }\n  });\n});",
+              "err": {},
+              "uuid": "ab07fbd8-8b9c-49f9-b39f-231e986ca625",
+              "parentUUID": "38eceb96-7d0d-4ead-a248-2602cc2d2c89",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "1d6f1042-0351-473f-ac75-ffbffdf48025",
+            "ab07fbd8-8b9c-49f9-b39f-231e986ca625"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 2134,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports/mocha",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}
